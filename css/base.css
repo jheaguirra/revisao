@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Caprasimo&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body{
+    background-color: rgb(255, 255, 255);
+    color: rgb(59, 38, 21);
+    line-height: 3.0;
+}
+
+.main-header{
+    background-color: rgb(187, 219, 169);
+    color: rgb(105, 49, 2);
+    padding: 1rem;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.main-header h1{
+    color: rgb(255, 255, 255);
+    font-family: "Bungee", sans-serif;
+}
+
+nav ul{
+    list-style: none;
+    padding: 1rem 0 0 0;
+}
+
+nav ul li{
+    display: inline-block;
+    margin: 0 15px;
+}
+nav ul li a:hover{
+    color: rgb(86, 116, 69) ; 
+    text-decoration: none;
+    font-weight: bold;
+    font-family: "Bungee", sans-serif;
+    transition: color 0.3s ease;
+}
+nav ul li a{
+    color:rgb(59, 38, 21);
+    border-bottom: 2px solid  rgb(187, 219, 169);
+    font-family: "Bungee", sans-serif;
+}
+.main-footer{
+    background-color: rgb(187, 219, 169);
+}
+p{
+    color: rgb(86, 116, 69);
+    font-family: "Caprasimo", serif;
+    text-align: center;
+    font-size: 20px;
+}

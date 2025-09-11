@@ -1,0 +1,42 @@
+.card-section{
+    border:1px dashed;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    min-height: 100px;
+    color: black;
+}
+
+.card-total{
+    text-align: right;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+#checkout-btn{
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2rem;
+    color: aliceblue;
+    background-color: rgb(187, 219, 169);
+    border: white solid;
+}
+#limpar-pedido{
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2rem;
+    color: aliceblue;
+    background-color: rgb(187, 219, 169);
+    border: none;
+    border: white solid;
+}
+.cart-item{
+    display: flex;
+    justify-content: space-between;
+    padding: 05rem 0;
+    border-bottom: 1px solid green;
+}
+.card-total{
+    text-align: right;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
