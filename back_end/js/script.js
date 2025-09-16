@@ -1,32 +1,8 @@
 document.addEventListener('DOMContentLoaded' , () => {
 
-    const addToCartButtons = document.querySelectorAll('.adicionar-carrinho');
-  
+    fetchProdutos();
 
-    addToCartButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            
 
-            const card = button.closest('.card')
-            const productName = card.getAttribute('data-name')
-            const productPrice = parseFloat(card.getAttribute('data-price'))
-         
-           
-
-            const product = {
-                name: productName,
-                price: productPrice,
-
-            };
-     
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            cart.push(product)
-
-            localStorage.setItem('cart', JSON.stringify(cart));
-
-            alert(`${productName} Foi adicionado ao carrinho!`)
-        })
-    })
     const cardItensContainer = document.getElementById('card-itens-container');
     const cardTotalValue = document.getElementById('card-total-value');
     const checkoutBtn = document.getElementById('checkout-btn');
@@ -80,3 +56,60 @@ document.addEventListener('DOMContentLoaded' , () => {
         location.reload(true)
       })
 });
+
+function fetchProdutos(){
+    fetch("http://localhost:8000/api/produtos/")
+    .then(res => res.json())
+    .then(data => renderProdutos(data))
+    .catch(err=> console.error("Erro ao buscar produto", err));    
+}
+function renderProdutos(produtos){
+    produtos.forEach(produto => {
+        const categoria = produto.categoria.nome.toLowerCase();
+        const container = document.getElementById(categoria);
+
+        if(container){
+            const card = document.createElement("div");
+            card.className = "card";
+            card.setAttribute("data-name", produto.nome);
+            card.setAttribute("data-price", produto.preco);
+            card.innerHTML = `
+                <img src="${produto.imagem}" alt="bolo de pote" width="200px">
+                <h4>${produto.nome}</h4>
+                <p class="price">${produto.preco}</p>
+                <button class="adicionar-carrinho">COMPRAR</button>
+            `;
+            container.appendChild(card);
+        }
+    })
+    addCarrinho();
+}
+function addCarrinho(){
+        const addToCartButtons = document.querySelectorAll('.adicionar-carrinho');
+  
+
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            
+
+            const card = button.closest('.card')
+            const productName = card.getAttribute('data-name')
+            const productPrice = parseFloat(card.getAttribute('data-price'))
+         
+           
+
+            const product = {
+                name: productName,
+                price: productPrice,
+
+            };
+     
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push(product)
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            alert(`${productName} Foi adicionado ao carrinho!`)
+        })
+    })
+}
